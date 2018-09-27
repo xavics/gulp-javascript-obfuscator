@@ -1,7 +1,7 @@
 var through = require('through2'),
 	Vinyl = require('vinyl');
 	JavaScriptObfuscator = require('javascript-obfuscator'),
-	PluginError = gutil.PluginError;
+    PluginError = require('plugin-error');
 
 module.exports = function gulpJavaScriptObfuscator(options) {
 	if(!options) {
