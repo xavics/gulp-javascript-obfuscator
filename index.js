@@ -1,5 +1,5 @@
 var through = require('through2'),
-	gutil = require('gulp-util'),
+	Vinyl = require('vinyl');
 	JavaScriptObfuscator = require('javascript-obfuscator'),
 	PluginError = gutil.PluginError;
 
@@ -19,7 +19,7 @@ module.exports = function gulpJavaScriptObfuscator(options) {
 				obfuscationResult = JavaScriptObfuscator.obfuscate(String(file.contents), options);
 				file.contents = new Buffer(obfuscationResult.getObfuscatedCode());
 				if(options.sourceMap && options.sourceMapMode !== 'inline') {
-					this.push(new gutil.File({
+					this.push(new Vinyl({
 						cwd: file.cwd,
 						base: file.base,
 						path: file.path + '.map',
